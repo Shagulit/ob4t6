@@ -34,7 +34,31 @@
   <footer class="footer">
     <a href="https://github.com/your-github-username/your-repo-name" target="_blank" class="source-link">Source Code</a>
     <p class="credit">by marcuslinder@gmail.com 2024-11-01</p>
+    <a href="#" onclick="showInstructions()" class="instruction-link">Add to Home Screen</a>
   </footer>
+
+  <!-- Popup for instructions -->
+  <div id="instructionPopup" class="popup" onclick="hideInstructions()">
+    <div class="popup-content">
+      <p>To add this webpage as an app on your phone:</p>
+      <ol>
+        <li>Tap the <strong>Share</strong> button in your browser.</li>
+        <li>Choose <strong>Add to Home Screen</strong>.</li>
+      </ol>
+      <p>Tap anywhere to close.</p>
+    </div>
+  </div>
+
+  <script>
+    function showInstructions() {
+      document.getElementById("instructionPopup").style.display = "flex";
+    }
+
+    function hideInstructions() {
+      document.getElementById("instructionPopup").style.display = "none";
+    }
+  </script>
+
 
 </body>
 </html>
