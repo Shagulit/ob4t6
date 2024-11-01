@@ -1,27 +1,68 @@
+/* General Body Styling */
 body { 
   font-family: Arial, sans-serif; 
   display: flex; 
   flex-direction: column; 
   align-items: center; 
   margin: 0; 
+  background: #f5f5f5;
 }
+
+/* Grid Styling */
 .grid { 
   display: grid; 
-  grid-template-columns: repeat(2, 1fr); /* 2 columns for larger buttons */
-  gap: 15px; 
-  margin: 20px; 
-  width: 100%; /* Ensure the grid takes up full width */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for better mobile size */
+  gap: 20px; 
+  padding: 20px;
+  width: 90%; /* Center grid with margins */
+  max-width: 400px; /* Limit width on larger screens */
+  box-sizing: border-box;
 }
+
+/* Button Styling */
 .button { 
-  padding: 20px; 
-  font-size: 8vw; /* Scale font size based on screen width */
-  height: 15vw; /* Make buttons larger and square */
-  width: 15vw;
+  font-size: 7vw; /* Responsive font size for mobile */
+  padding: 10px;
+  height: 20vw; /* Increased button height for mobile */
   cursor: pointer; 
-  text-align: center; 
+  text-align: center;
+  border-radius: 10px; /* Rounded corners for a playful look */
+  border: 3px solid #222; /* Black border for contrast */
+  background: linear-gradient(135deg, #ffeb3b, #ff5722); /* Fun gradient background */
+  color: #222; /* Text color */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5); /* Shadow for depth */
+  transition: transform 0.2s, box-shadow 0.2s;
 }
+
+.button:hover { 
+  transform: scale(1.05); /* Slightly larger on hover */
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7); /* Enhanced shadow on hover */
+}
+
+.button:active { 
+  transform: scale(0.95); /* Button presses in slightly */
+}
+
+/* Log Button */
 .log { 
   margin-top: 20px; 
-  font-size: 5vw; 
-  cursor: pointer; 
+  font-size: 5vw;
+  padding: 10px 20px; 
+  border-radius: 8px;
+  border: 2px solid #444; 
+  background-color: #888; 
+  color: white; 
+  cursor: pointer;
+}
+
+/* Desktop adjustments */
+@media (min-width: 768px) {
+  .button {
+    font-size: 2vw; /* Smaller font size on desktop */
+    height: 8vw; /* Reduced button height on desktop */
+    max-width: 150px;
+  }
+  .log {
+    font-size: 1.5vw;
+  }
 }
