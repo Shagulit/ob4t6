@@ -37,3 +37,16 @@ function toggleLog() {
   logOutput.style.display = logOutput.style.display === 'none' ? 'block' : 'none';
   logOutput.innerHTML = log.join('<br>');
 }
+
+function estimateMean() {
+  const numRolls = 1000;
+  let sum = 0;
+  
+  for (let i = 0; i < numRolls; i++) {
+    let roll = Math.floor(Math.random() * 6) + 1;
+    sum += roll;
+  }
+  
+  const mean = sum / numRolls;
+  document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
+}
