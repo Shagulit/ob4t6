@@ -15,21 +15,24 @@ function rollDice(button, count) {
   }
 }
 
-function calculateExplodingRoll(count) {
+function calculateExplodingRoll(count, suppressLog = false) {
   let total = 0;
-  let details = `${count}t6: `; // Start log details with roll type
+  let details = `${count}t6: `;
+
   for (let i = 0; i < count; i++) {
     let roll = Math.floor(Math.random() * 6) + 1;
-    details += `${roll} `;
+    if (!suppressLog) details += `${roll} `;
+
     if (roll === 6) {
-      const explosion = calculateExplodingRoll(2); // Add 2t6 on explosion
+      const explosion = calculateExplodingRoll(2, suppressLog); // Recursive call with same suppression setting
       total += explosion.total;
-      details += `(+${explosion.details}) `;
+      if (!suppressLog) details += `(+${explosion.details}) `;
     } else {
       total += roll;
     }
   }
-  return { total, details };
+
+  return suppressLog ? { total } : { total, details };
 }
 
 function toggleLog() {
@@ -41,11 +44,15 @@ function toggleLog() {
 function estimateMean() {
   const numRolls = 1000;
   let sum = 0;
-  
+
   for (let i = 0; i < numRolls; i++) {
-    let roll = Math.floor(Math.random() * 6) + 1;
-    sum += roll;
+    sum += calculateExplodingRoll(1, true).total; // Use suppressed log version
   }
+
+  const mean = sum / numRolls;
+  document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
+}
+
   
   const mean = sum / numRolls;
   document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
