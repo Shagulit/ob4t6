@@ -1,26 +1,27 @@
 body { 
-    font-family: Arial, sans-serif; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    margin: 0; 
-  }
-  .grid { 
-    display: grid; 
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 10px; 
-    margin: 20px; 
-  }
-  .button { 
-    padding: 20px; 
-    font-size: 2em; 
-    cursor: pointer; 
-    width: 100%; 
-    text-align: center; 
-  }
-  .log { 
-    margin-top: 20px; 
-    font-size: 1em; 
-    cursor: pointer; 
-  }
-  
+  font-family: Arial, sans-serif; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  margin: 0; 
+}
+.grid { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); /* 2 columns for larger buttons */
+  gap: 15px; 
+  margin: 20px; 
+  width: 100%; /* Ensure the grid takes up full width */
+}
+.button { 
+  padding: 20px; 
+  font-size: 8vw; /* Scale font size based on screen width */
+  height: 15vw; /* Make buttons larger and square */
+  width: 15vw;
+  cursor: pointer; 
+  text-align: center; 
+}
+.log { 
+  margin-top: 20px; 
+  font-size: 5vw; 
+  cursor: pointer; 
+}
