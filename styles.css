@@ -97,3 +97,22 @@ body {
   margin: 5px 0 0 0;
 }
 
+.mean-estimate-link {
+  display: block;
+  margin-top: 10px;
+  font-size: 2vw;
+  color: rgba(255, 255, 255, 0.5); /* Subtle link color */
+  text-decoration: none;
+}
+
+.mean-estimate-link:hover {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: underline;
+}
+
+.mean-result {
+  font-size: 2vw;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 5px;
+}
+
