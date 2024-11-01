@@ -52,8 +52,3 @@ function estimateMean() {
   const mean = sum / numRolls;
   document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
 }
-
-  
-  const mean = sum / numRolls;
-  document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
-}
