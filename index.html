@@ -1,1 +1,22 @@
-Hello from Mac
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roller</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="grid">
+    <!-- Buttons from 1t6 to 12t6 -->
+    <button class="button" onclick="rollDice(this, 1)">1t6</button>
+    <button class="button" onclick="rollDice(this, 2)">2t6</button>
+    <!-- Add more buttons up to 12t6 following this pattern -->
+    <!-- Example button template: <button class="button" onclick="rollDice(this, N)">Nt6</button> -->
+  </div>
+  <button class="log" onclick="toggleLog()">Show Log</button>
+  <div id="logOutput" style="display:none;"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
