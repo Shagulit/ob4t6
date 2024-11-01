@@ -42,7 +42,7 @@ function toggleLog() {
 }
 
 function estimateMean() {
-  const numRolls = 1000;
+  const numRolls = 10000;
   let sum = 0;
 
   for (let i = 0; i < numRolls; i++) {
