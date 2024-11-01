@@ -4,15 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dice Roller</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="grid">
     <!-- Buttons from 1t6 to 12t6 -->
     <button class="button" onclick="rollDice(this, 1)">1t6</button>
     <button class="button" onclick="rollDice(this, 2)">2t6</button>
-    <!-- Add more buttons up to 12t6 following this pattern -->
-    <!-- Example button template: <button class="button" onclick="rollDice(this, N)">Nt6</button> -->
+    <button class="button" onclick="rollDice(this, 3)">3t6</button>
+    <button class="button" onclick="rollDice(this, 4)">4t6</button>
+    <button class="button" onclick="rollDice(this, 5)">5t6</button>
+    <button class="button" onclick="rollDice(this, 6)">6t6</button>
+    <button class="button" onclick="rollDice(this, 7)">7t6</button>
+    <button class="button" onclick="rollDice(this, 8)">8t6</button>
+    <button class="button" onclick="rollDice(this, 9)">9t6</button>
+    <button class="button" onclick="rollDice(this, 10)">10t6</button>
+    <button class="button" onclick="rollDice(this, 11)">11t6</button>
+    <button class="button" onclick="rollDice(this, 12)">12t6</button>
   </div>
   <button class="log" onclick="toggleLog()">Show Log</button>
   <div id="logOutput" style="display:none;"></div>
