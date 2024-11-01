@@ -15,16 +15,18 @@ body {
 
 
 
-/* Grid Styling */
-.grid { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); /* 2 columns for better mobile size */
-  gap: 20px; 
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two buttons per row */
+  gap: 20px;
   padding: 20px;
-  width: 90%; /* Center grid with margins */
-  max-width: 400px; /* Limit width on larger screens */
+  width: 90%;
+  max-width: 400px;
   box-sizing: border-box;
+  overflow-y: auto; /* Allow scrolling if the grid is too tall */
+  max-height: 80vh; /* Limits the grid height for better visibility on mobile */
 }
+
 
 /* Button Styling */
 .button { 
