@@ -5,15 +5,19 @@ function rollDice(button, count) {
     button.dataset.original = button.textContent;
   }
   if (button.textContent.match(/^\d+$/)) {
-    // Reset button to its original label
+    // Reset button to original label
     button.textContent = button.dataset.original;
+    button.classList.remove("number");
   } else {
     // Calculate and display the roll result
     const result = calculateExplodingRoll(count);
     button.textContent = result.total;
-    log.push(result.details); // Add detailed roll to log
+    button.classList.add("number");
+    log.push(result.details);
+    updateLog();
   }
 }
+
 
 function calculateExplodingRoll(count, suppressLog = false) {
   let total = 0;
