@@ -18,45 +18,27 @@ function rollDice(button, count) {
   }
 }
 
-
-function calculateExplodingRoll(count, suppressLog = false) {
+function calculateExplodingRoll(count) {
   let total = 0;
-  let details = "";
+  let rollDetails = [];
 
   for (let i = 0; i < count; i++) {
     let roll = Math.floor(Math.random() * 6) + 1;
     total += roll;
+    rollDetails.push(roll);
 
-    if (!suppressLog) {
-      details += `${roll}`;
-    }
-
-    // Handle explosion: only add exactly 2 extra rolls if the roll is 6
+    // Handle explosion: if roll is 6, add exactly 2 additional rolls
     if (roll === 6) {
-      const explosion = calculateExplodingRoll(2, suppressLog);
+      const explosion = calculateExplodingRoll(2);
       total += explosion.total;
-
-      if (!suppressLog) {
-        details += `(-->Ob2t6=${explosion.total}=${explosion.details})`;
-      }
-    }
-
-    if (!suppressLog) {
-      details += " + "; // Add separator between rolls
+      rollDetails.push(`(-->Ob2t6=${explosion.total}: ${explosion.details})`);
     }
   }
 
-  // Remove trailing " + " and add final formatting
-  if (!suppressLog) {
-    details = details.trim().replace(/\+ $/, ""); // Trim final "+ "
-    details = `Ob${count}t6=${total}: ${details}`;
-  }
-
-  return suppressLog ? { total } : { total, details };
+  // Format details into a readable log entry
+  const details = `Ob${count}t6=${total}: ${rollDetails.join(" + ")}`;
+  return { total, details };
 }
-
-
-
 
 function toggleLog() {
   const logOutput = document.getElementById("logOutput");
@@ -69,23 +51,20 @@ function updateLog() {
   logOutput.innerHTML = log.join('<br>');
 }
 
-
 function estimateMean() {
   const numRolls = 10000;
   let sum = 0;
 
   for (let i = 0; i < numRolls; i++) {
-    sum += calculateExplodingRoll(1, true).total; // Use suppressed log version
+    sum += calculateExplodingRoll(1).total;
   }
 
   const mean = sum / numRolls;
-  document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
+  document.getElementById("meanResult").textContent = `Estimated E[Ob1t6]: ${mean.toFixed(2)}`;
 }
 
-// Display the last modified date
 document.addEventListener("DOMContentLoaded", () => {
   const lastModified = new Date(document.lastModified);
   const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
   document.getElementById("lastModified").textContent = lastModified.toLocaleDateString('en-GB', options);
 });
-
