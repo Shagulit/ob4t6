@@ -25,11 +25,11 @@ body {
   max-height: 80vh; /* Limit grid height for visibility */
 }
 
-/* Button Styling */
+/* Button Styling for Mobile */
 .button {
-  font-size: 7vw; /* Responsive font size for mobile */
+  font-size: 6vw; /* Smaller responsive font size for mobile */
   padding: 10px;
-  height: 20vw; /* Button height for mobile */
+  height: 18vw; /* Slightly reduce button height for mobile */
   cursor: pointer;
   text-align: center;
   border-radius: 10px; /* Rounded corners */
@@ -47,6 +47,15 @@ body {
 .button.number {
   background: linear-gradient(135deg, #00bfff, #1e90ff); /* Blue gradient when showing a number */
   color: white;
+}
+
+/* Button Styling for Desktop */
+@media (min-width: 768px) {
+  .button {
+    font-size: 2rem; /* Fixed font size for desktop */
+    width: 160px; /* Fixed button width */
+    height: 80px; /* Fixed button height */
+  }
 }
 
 /* Log Button Styling */
