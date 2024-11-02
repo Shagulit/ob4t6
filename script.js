@@ -24,14 +24,16 @@ function calculateExplodingRoll(count) {
 
   for (let i = 0; i < count; i++) {
     let roll = Math.floor(Math.random() * 6) + 1;
-    total += roll;
-    rollDetails.push(roll);
 
     // Handle explosion: if roll is 6, add exactly 2 additional rolls
     if (roll === 6) {
       const explosion = calculateExplodingRoll(2);
       total += explosion.total;
-      rollDetails.push(`(-->Ob2t6=${explosion.total}: ${explosion.details})`);
+      rollDetails.push(`(-->${explosion.total}: ${explosion.details})`);
+    }
+    else {
+          total += roll;
+          rollDetails.push(roll);
     }
   }
 
