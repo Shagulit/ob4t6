@@ -82,3 +82,10 @@ function estimateMean() {
   document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
 }
 
+// Display the last modified date
+document.addEventListener("DOMContentLoaded", () => {
+  const lastModified = new Date(document.lastModified);
+  const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
+  document.getElementById("lastModified").textContent = lastModified.toLocaleDateString('en-GB', options);
+});
+
