@@ -27,30 +27,32 @@ function calculateExplodingRoll(count, suppressLog = false) {
     let roll = Math.floor(Math.random() * 6) + 1;
     total += roll;
 
-    // Add the roll to details
-    if (!suppressLog) {
-      details += `${roll} `;
-    }
-
-    // Check for explosion
+    // Format roll and explosion details
     if (roll === 6) {
       const explosion = calculateExplodingRoll(2, suppressLog);
       total += explosion.total;
 
-      // Add the explosion rolls with parentheses
+      // Explosion format: (6-->Ob2t6=<explosion total>=<explosion details>)
       if (!suppressLog) {
-        details += `(-->Ob2t6: ${explosion.details.trim()}) `;
+        details += `(6-->Ob2t6=${explosion.total}=${explosion.details.trim()}) + `;
+      }
+    } else {
+      // Add non-explosion roll to details
+      if (!suppressLog) {
+        details += `${roll} + `;
       }
     }
   }
 
-  // Final format: Ob<count>t6=<total>: <details>
+  // Remove trailing "+ " from details and add final formatting
   if (!suppressLog) {
-    details = `Ob${count}t6=${total}: ${details.trim()}`;
+    details = details.trim().replace(/\+ $/, ""); // Trim final "+ "
+    details = `Ob${count}t6=${total}: ${details}`;
   }
 
   return suppressLog ? { total } : { total, details };
 }
+
 
 
 function toggleLog() {
