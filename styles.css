@@ -116,3 +116,16 @@ body {
   margin-top: 5px;
 }
 
+.button {
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.button:active {
+  transform: scale(0.95); /* Slight press effect */
+}
+
+.button.number {
+  background-color: #ffa07a; /* Different color when showing a number */
+  color: white;
+}
+
