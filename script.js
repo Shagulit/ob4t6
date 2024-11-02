@@ -29,7 +29,7 @@ function calculateExplodingRoll(count) {
     if (roll === 6) {
       const explosion = calculateExplodingRoll(2);
       total += explosion.total;
-      rollDetails.push(`(${explosion.total}--> ${explosion.details})`);
+      rollDetails.push(`${explosion.total}-->(${explosion.details})`);
     }
     else {
           total += roll;
