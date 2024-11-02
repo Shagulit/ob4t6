@@ -21,23 +21,23 @@ function rollDice(button, count) {
 
 function calculateExplodingRoll(count, suppressLog = false) {
   let total = 0;
-  let details = `${count}t6: `;
+  let details = `Ob${count}t6=`;
 
   for (let i = 0; i < count; i++) {
     let roll = Math.floor(Math.random() * 6) + 1;
     if (!suppressLog) details += `${roll} `;
-
     if (roll === 6) {
-      const explosion = calculateExplodingRoll(2, suppressLog); // Recursive call with same suppression setting
+      const explosion = calculateExplodingRoll(2, suppressLog);
       total += explosion.total;
-      if (!suppressLog) details += `(+${explosion.details}) `;
+      if (!suppressLog) details += `-->Ob2t6: ${explosion.details} `;
     } else {
       total += roll;
     }
   }
 
-  return suppressLog ? { total } : { total, details };
+  return suppressLog ? { total } : { total, details: `${details}${total}: ${details}` };
 }
+
 
 function toggleLog() {
   const logOutput = document.getElementById("logOutput");
