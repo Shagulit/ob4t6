@@ -21,22 +21,37 @@ function rollDice(button, count) {
 
 function calculateExplodingRoll(count, suppressLog = false) {
   let total = 0;
-  let details = `Ob${count}t6=`;
+  let details = "";
 
   for (let i = 0; i < count; i++) {
     let roll = Math.floor(Math.random() * 6) + 1;
-    if (!suppressLog) details += `${roll} `;
+    total += roll;
+
+    // Add the roll to details
+    if (!suppressLog) {
+      details += `${roll} `;
+    }
+
+    // Check for explosion
     if (roll === 6) {
       const explosion = calculateExplodingRoll(2, suppressLog);
       total += explosion.total;
-      if (!suppressLog) details += `-->Ob2t6: ${explosion.details} `;
-    } else {
-      total += roll;
+
+      // Add the explosion rolls with parentheses
+      if (!suppressLog) {
+        details += `(-->Ob2t6: ${explosion.details.trim()}) `;
+      }
     }
   }
 
-  return suppressLog ? { total } : { total, details: `${details}${total}: ${details}` };
+  // Final format: Ob<count>t6=<total>: <details>
+  if (!suppressLog) {
+    details = `Ob${count}t6=${total}: ${details.trim()}`;
+  }
+
+  return suppressLog ? { total } : { total, details };
 }
+
 
 function toggleLog() {
   const logOutput = document.getElementById("logOutput");
