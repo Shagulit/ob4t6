@@ -67,6 +67,14 @@ function estimateMean() {
 
 document.addEventListener("DOMContentLoaded", () => {
   const lastModified = new Date(document.lastModified);
-  const options = { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' };
-  document.getElementById("lastModified").textContent = lastModified.toLocaleDateString('en-GB', options);
+  const options = {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false // Use 24-hour format
+  };
+  document.getElementById("lastModified").textContent = lastModified.toLocaleString('sv-SE', options);
 });
+
