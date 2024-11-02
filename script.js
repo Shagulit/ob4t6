@@ -38,12 +38,17 @@ function calculateExplodingRoll(count, suppressLog = false) {
   return suppressLog ? { total } : { total, details: `${details}${total}: ${details}` };
 }
 
-
 function toggleLog() {
   const logOutput = document.getElementById("logOutput");
   logOutput.style.display = logOutput.style.display === 'none' ? 'block' : 'none';
+  updateLog();
+}
+
+function updateLog() {
+  const logOutput = document.getElementById("logOutput");
   logOutput.innerHTML = log.join('<br>');
 }
+
 
 function estimateMean() {
   const numRolls = 10000;
