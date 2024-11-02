@@ -27,24 +27,26 @@ function calculateExplodingRoll(count, suppressLog = false) {
     let roll = Math.floor(Math.random() * 6) + 1;
     total += roll;
 
-    // Format roll and explosion details
+    if (!suppressLog) {
+      details += `${roll}`;
+    }
+
+    // Handle explosion: only add exactly 2 extra rolls if the roll is 6
     if (roll === 6) {
       const explosion = calculateExplodingRoll(2, suppressLog);
       total += explosion.total;
 
-      // Explosion format: (6-->Ob2t6=<explosion total>=<explosion details>)
       if (!suppressLog) {
-        details += `(6-->Ob2t6=${explosion.total}=${explosion.details.trim()}) + `;
+        details += `(-->Ob2t6=${explosion.total}=${explosion.details})`;
       }
-    } else {
-      // Add non-explosion roll to details
-      if (!suppressLog) {
-        details += `${roll} + `;
-      }
+    }
+
+    if (!suppressLog) {
+      details += " + "; // Add separator between rolls
     }
   }
 
-  // Remove trailing "+ " from details and add final formatting
+  // Remove trailing " + " and add final formatting
   if (!suppressLog) {
     details = details.trim().replace(/\+ $/, ""); // Trim final "+ "
     details = `Ob${count}t6=${total}: ${details}`;
@@ -52,6 +54,7 @@ function calculateExplodingRoll(count, suppressLog = false) {
 
   return suppressLog ? { total } : { total, details };
 }
+
 
 
 
@@ -78,3 +81,4 @@ function estimateMean() {
   const mean = sum / numRolls;
   document.getElementById("meanResult").textContent = `Estimated E[ob1t6]: ${mean.toFixed(2)}`;
 }
+
